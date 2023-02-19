@@ -15,15 +15,16 @@
     "es/**/*"
   ],
   "scripts": {
-    "clean": "rimraf lib && rimraf react-share.tgz",
-    "build": "yarn lint && yarn build:commonjs && yarn build:es && yarn pack --filename react-share.tgz",
+    "clean": "rimraf lib && rimraf opensphere-inc-react-share*.tgz",
+    "build": "yarn lint && yarn build:commonjs && yarn build:es && yarn pack",
     "build:commonjs": "rimraf ./lib && tsc -p . --outDir ./lib --module commonjs",
     "build:es": "rimraf ./es && tsc -p . --outDir ./es --module es2015 --moduleResolution Node",
     "build-demo": "rimraf ./docs && cross-env NODE_ENV=production webpack -p --config webpack.demo.config.js",
     "run-demos": "webpack-dev-server --hot --config webpack.demo.config.js --progress",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "yarn build",
-    "start": "yarn run-demos"
+    "start": "yarn run-demos",
+    "upgrade-frontend": "cd ../frontend && yarn copy-tarballs && yarn && cross-env-shell yarn add ./opensphere-inc-react-share-v$npm_package_version.tgz"
   },
   "keywords": [
     "react",
@@ -59,8 +60,9 @@
     "@types/react-dom": "^16.9.8",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
-    "cross-env": "7.0.3",
+    "cross-env": "^7.0.3",
     "css-loader": "6.7.1",
+    "dotenv-cli": "^7.0.0",
     "eslint": "8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-babel": "^5.3.1",
