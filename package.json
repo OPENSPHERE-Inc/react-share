@@ -24,7 +24,7 @@
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src ./demo",
     "prepublishOnly": "yarn build",
     "start": "yarn run-demos",
-    "upgrade-frontend": "cd ../frontend && yarn copy-tarballs && cross-env-shell yarn add ./opensphere-inc-react-share-v$npm_package_version.tgz"
+    "upgrade-frontend": "cd ../frontend && yarn copy-tarballs && cross-env-shell yarn add --update-checksums ./opensphere-inc-react-share-v$npm_package_version.tgz"
   },
   "keywords": [
     "react",
